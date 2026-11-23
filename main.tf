@@ -110,18 +110,18 @@ resource "azurerm_resource_group" "this" {
 
 # Event Hubs Namespace
 resource "azurerm_eventhub_namespace" "this" {
-  name                          = local.eventhubs_name
-  location                      = local.location
-  resource_group_name           = local.resource_group_name
-  sku                           = var.sku
-  capacity                      = var.capacity
-  dedicated_cluster_id          = var.dedicated_cluster_id
-  auto_inflate_enabled          = var.auto_inflate_enabled
-  maximum_throughput_units      = var.maximum_throughput_units
+  name                     = local.eventhubs_name
+  location                 = local.location
+  resource_group_name      = local.resource_group_name
+  sku                      = var.sku
+  capacity                 = var.capacity
+  dedicated_cluster_id     = var.dedicated_cluster_id
+  auto_inflate_enabled     = var.auto_inflate_enabled
+  maximum_throughput_units = var.maximum_throughput_units
   # zone_redundant not supported in azurerm 4.x - handled via sku
   minimum_tls_version           = var.minimum_tls_version
   public_network_access_enabled = var.public_network_access_enabled
-  local_authentication_enabled = var.local_auth_enabled
+  local_authentication_enabled  = var.local_auth_enabled
 
   dynamic "identity" {
     for_each = local.identity_type != null ? [1] : []
